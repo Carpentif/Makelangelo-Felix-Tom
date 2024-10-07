@@ -26,7 +26,43 @@ public class MathHelperTest {
         assertTrue(MathHelper.equals(a0, a1, b0, b1, 0.01));
         assertFalse(MathHelper.equals(a0, a1, b0, b1, 0.0001));
     }
-    
+
+    /**
+     * Test the 'lerp' method of MathHelper using faker, check interpolation between random values and edge cases (0 and 1)
+     */
+    @Test
+    public void testLerpWithFaker() {
+        Faker faker = new Faker();
+        double t = faker.number().randomDouble(2, 0, 1);
+        double a = faker.number().randomDouble(2, -100, 100);
+        double b = faker.number().randomDouble(2, -100, 100);
+
+        double result = MathHelper.lerp(t, a, b);
+
+        double expected = a + t * (b - a);
+        assertEquals(expected, result, 0.0001);
+    }
+
+    /**
+     * Test the 'intersectionOfCircles' method of MathHelper, check correct calculation of circle intersections.
+     */
+    @Test
+    public void testIntersectionOfCircles() {
+        // 1: intersection of two equal circles
+        Vector2d result1 = MathHelper.intersectionOfCircles(5, 5, 5);
+        assertEquals(2.5, result1.x, 0.0001);
+        assertEquals(Math.sqrt(18.75), result1.y, 0.0001);
+
+        // 2: circles touching at one point
+        Vector2d result2 = MathHelper.intersectionOfCircles(3, 2, 5);
+        assertEquals(3.0, result2.x, 0.0001);
+        assertEquals(0.0, result2.y, 0.0001);
+
+        // 3: circles not intersecting
+        assertThrows(IllegalArgumentException.class, () -> MathHelper.intersectionOfCircles(1, 1, 3));
+
+    }
+
     @Test
     public void testBetween() {
         Point2d a = new Point2d();
