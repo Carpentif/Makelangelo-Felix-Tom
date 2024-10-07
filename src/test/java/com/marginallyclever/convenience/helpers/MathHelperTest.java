@@ -6,6 +6,23 @@ import org.junit.jupiter.api.Test;
 import javax.vecmath.Point2d;
 
 public class MathHelperTest {
+
+    /**
+     * Test the 'equals' method of MathHelper, it checks both equal and non-equal cases.
+     */
+    @Test
+    public void testEquals() {
+        Point2d a0 = new Point2d(1, 1);
+        Point2d a1 = new Point2d(2, 2);
+        Point2d b0 = new Point2d(1, 1);
+        Point2d b1 = new Point2d(2, 2);
+        assertTrue(MathHelper.equals(a0, a1, b0, b1, 0.001));
+
+        b1 = new Point2d(2.001, 2.001);
+        assertTrue(MathHelper.equals(a0, a1, b0, b1, 0.01));
+        assertFalse(MathHelper.equals(a0, a1, b0, b1, 0.0001));
+    }
+    
     @Test
     public void testBetween() {
         Point2d a = new Point2d();
