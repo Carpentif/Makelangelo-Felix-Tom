@@ -1,9 +1,13 @@
 package com.marginallyclever.convenience.helpers;
 
 import org.junit.jupiter.api.Assertions;
+
 import org.junit.jupiter.api.Test;
 
 import javax.vecmath.Point2d;
+import static org.junit.jupiter.api.Assertions.*;
+import javax.vecmath.Vector2d;
+import com.github.javafaker.Faker;
 
 public class MathHelperTest {
 
