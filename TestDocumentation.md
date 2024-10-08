@@ -1,8 +1,10 @@
 ## Tests ajoutés lors de la tâche 2
 
 Tout d'abord, nous avons ajouté des tests qui permettent de vérifier certains comportement liés à la classe QuadGraph qui est une structure de donnée utilisé pour trouver facilement des objets dans un
-environnement 2D et qui est utile ici pour insertion et la recherche de point entre autre. Cette classe n'avait aucun test lié à celle-ci. L'idéal quand on ajoute des tests unitaires est de tester tous les 
+environnement 2D et qui est utile ici pour insertion et la recherche de point entre autre. Cette classe n'avait aucun test lié à celle-ci. On a aussi un test dans la classe DrawingHelper qui permet de charger des textures. L'idéal quand on ajoute des tests unitaires est de tester tous les 
 scénarios possibles dans un test chacun en faisant attention aux 'edge cases'. Ensuite, nous avons étendu nos tests à d'autres classes (MathHelper et Histogram) pour tester l'interpolation linéaire et l'intersection de cercles, ainsi que le traitement d'histogrammes d'images. Faker a également été utilisé sur un test (testLerpWithFaker).
+
+##
 
 - Test 1 (testInsert2DPointInSite)
 [Lien du test](https://github.com/Carpentif/Makelangelo-Felix-Tom/blob/28a121577bd009ba571eef39a118e0d232d14de0/src/test/java/com/marginallyclever/convenience/QuadGraphTest.java#L10C5-L24C6)
@@ -31,9 +33,6 @@ fait la recherche du point dans chacun des enfants et on va retourner aucun poin
 
 ## 
 
-Le prochain test était pour un des helpers (DrawingHelper) qui a certaines méthodes qui aident au dessin : drawCircle, drawRectangle, etc. Pour ce test, on a décidé de tester la méthode qui permet
-de charger une texture.
-
 - Test 5 (testLoadTexture) [Lien du test](https://github.com/Carpentif/Makelangelo-Felix-Tom/blob/28a121577bd009ba571eef39a118e0d232d14de0/src/test/java/com/marginallyclever/convenience/helpers/DrawingHelperTest.java#L11C5-L23C6)
 
 Ici on teste simplement que des mauvais fichiers fournis en entrée retourneront bel et bien une Texture nulle (null). Comme c'est un test plus simple, on a décidé de le faire en parameterizedTest avec plusieurs
@@ -52,6 +51,8 @@ Ce test vérifie la méthode lerp (interpolation linéaire) de la classe MathHel
 - Test 8 (testIntersectionOfCircles) [Lien du test](https://github.com/Carpentif/Makelangelo-Felix-Tom/blob/21c5ff0e3b05b1f7400edfcdef74f80b609c89a1/src/test/java/com/marginallyclever/convenience/helpers/MathHelperTest.java#L50)
 
 Ce test verifie la méthode intersectionOfCircles de la classe MathHelper. Il vérifie le calcul correct des intersections de cercles pour divers scénarios. (intersection de deux cercles égaux, cercles se touchant en un point, cercles non sécants)
+
+##
 
 - Test 9 (testGetGreyHistogramOfBlackAndWhiteImage) [Lien du test](https://github.com/Carpentif/Makelangelo-Felix-Tom/blob/21c5ff0e3b05b1f7400edfcdef74f80b609c89a1/src/test/java/com/marginallyclever/convenience/HistogramTest.java#L13)
 
