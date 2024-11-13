@@ -35,6 +35,18 @@ ne fonctionne qu'avec l'algorithme G1 pour le GC (activé par défaut dans notre
 
 Source: https://gceasy.io/gc-recommendations/stringdeduplication-solution.jsp
 
-### 3) 
-### 4)
-### 5)
+### 3) -XX:+UseLargePages (type TLB)
+Ce flag a pour objectif d'optimiser le tlb (Translation-Lookaside Buffer). Le tlb est un cache qui garde les liens entre
+les addresses virtuelles et physiques récemment utilisée. Si on a un tlb miss, qui apparaît lorsque le lien n'est pas
+dans le cache, ça demande plus de ressources en devant accéder à la mémoire plusieurs fois. En utilisant ce flag on 
+augmente la taille des pages ce qui permet à une entrée tlb d'avoir accès à plus de mémoire ce qui peut augmenter la
+performance des applications qui utilisent beaucoup de mémoire en réduisant le nombre de tlb miss.
+
+Source : https://www.oracle.com/java/technologies/javase/largememory-pages.html
+
+### 4) (type GC (Garbage collector))?
+### 5) (type Print pour augmenter lisibilité et infos)?
+
+Pour bien finir la session voici un ascii art de notre professeur. [Art] (lien fichier png)
+
+Merci 
