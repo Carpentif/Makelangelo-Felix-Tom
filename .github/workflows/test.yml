@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        jvmFlags: ["-Xmx512m"]
+        jvmFlags: ["-Xmx512m", "-XX:+UseStringDeduplication"]
     steps:
     - uses: actions/checkout@v4
 
@@ -19,19 +19,19 @@ jobs:
         java-version: '17'
         cache: 'maven'
 
-    - name: Build and Test with Maven with ${{matrix.jvmFlags}}
+    - name: Build and Test with Maven with flag ${{matrix.jvmFlags}}
       timeout-minutes: 15
       env:
         MAVEN_OPTS: ${{matrix.jvmFlags}}
       run: ./mvnw -B verify
 
-    - name: Get JaCoCo Coverage with ${{matrix.jvmFlags}}
+    - name: Get JaCoCo Coverage with flag ${{matrix.jvmFlags}}
       id: coverage  
       run: |
         coverage=$(python3 config/coverage.py target/site/jacoco/jacoco.csv) 
         echo "COVERAGE=$coverage" >> $GITHUB_ENV
 
-    - name: Fail if coverage has not improved for test with ${{matrix.jvmFlags}}.
+    - name: Fail if coverage has not improved for test with flag ${{matrix.jvmFlags}}.
       run: |
         coverage=$COVERAGE
         threshold=24.46

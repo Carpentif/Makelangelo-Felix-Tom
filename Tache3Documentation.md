@@ -17,8 +17,24 @@ Après ces changements, on a maintenant une action github qui build avec différ
 matrice.
 
 ## Choix des flags
-### 1) 
-### 2)
-### 3)
+### 1) -Xmx512m (type Heap)
+Ici ce flag permet de mettre une valeur maximale que peut utiliser notre heap dans la mémoire. Ici on le met à 512 MB.
+On a donc un maximum de 512 MB pour l'allocation d'objets et de data dans notre heap. Ce flag est assez important et
+peut avoir un impact sur la performance. Si on n'alloue pas assez de mémoire il se pourrait qu'on obtienne un 
+OutOfMemoryError, car on manquerait de mémoire et si on allour une trop grande valeur on perd de la mémoire qui aurait
+pû être utilisée ailleurs et aurait eu un meilleur impact sur la performance que d'assigner un surplus de mémoire ici.
+
+Source : https://www.designgurus.io/answers/detail/what-is-xmx-and-xms
+
+### 2) -XX:+UseStringDeduplication (type String)
+Ici, ce flag permet de réduire la mémoire qua va utiliser les strings en général. En effet, on dit qu'environ 25% de la
+mémoire des applications Java sont remplis par des strings et qu'environ 13.5% de cette mémoire est occupée par des
+duplications de string. Avec ce flag on va essayer d'éliminer les duplications de string au processus du GC. Ce flag nous
+permet donc de potentiellement réduire la mémoire utilisée par les strings. Il faut cependant faire attention, car ce flag
+ne fonctionne qu'avec l'algorithme G1 pour le GC (activé par défaut dans notre cas).
+
+Source: https://gceasy.io/gc-recommendations/stringdeduplication-solution.jsp
+
+### 3) 
 ### 4)
 ### 5)
