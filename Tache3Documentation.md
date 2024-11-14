@@ -44,9 +44,16 @@ performance des applications qui utilisent beaucoup de mémoire en réduisant le
 
 Source : https://www.oracle.com/java/technologies/javase/largememory-pages.html
 
-### 4) (type GC (Garbage collector))?
-### 5) (type Print pour augmenter lisibilité et infos)?
+### 4) -XX:+PrintGCDetails (type Print)
+Ce flag permet d'obtenir des informations détaillées sur le Garbage Collector pendant l'exécution des tests. C'est pertinent pour nos tests en particulier (tests 9 et 10), car ces opérations peuvent créer beaucoup d'objets temporaires en mémoire. Les infos fournis nous permettent de voir quand et comment la mémoire est libérée, identifier d'éventuels problèmes de performance liés a la gestion mémoire, optimiser l'utilisation de la mémoire pour le traitement d'images.
 
-Pour bien finir la session voici un ascii art de notre professeur. [Art] (lien fichier png)
+Source : https://www.oracle.com/technical-resources/articles/java/g1gc.html
+
+### 5) -XX:+UseParallelGC (type GC)
+Ce flag active le Parallel Garbage Collector, particulièrement efficace pour les applications effectuant beaucoup de calculs comme nos tests mathématiques (tests 6-8). Voici les avantages: on a une meilleure performance pour les calculs de maths intensifs grâce à la parallélisation, une gestion optimisée de la mémoire pour les objets temporaires lors des calculs, et surtout pertinant pour les apps multi-thread qui nécessitent un débit élevé.
+
+Source : https://docs.oracle.com/en/java/javase/17/gctuning/parallel-collector1.html
+
+Pour bien finir la session voici un ascii art de notre professeur (réalisé à la main ! (pas du tout)). [Art] (lien fichier png)
 
 Merci 
