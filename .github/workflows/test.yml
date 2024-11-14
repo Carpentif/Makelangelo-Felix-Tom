@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        jvmFlags: ["-Xmx512m", "-XX:+UseStringDeduplication", "-XX:+UseLargePages"]
+        jvmFlags: ["-Xmx512m", "-XX:+UseStringDeduplication", "-XX:+UseLargePages", "-XX:+PrintGCDetails", "-XX:+UseParallelGC"]
     steps:
     - uses: actions/checkout@v4
 
